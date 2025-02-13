@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: antiquewhite;
+        }
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input {
+            padding: 8px;
+            margin: 10px;
+        }
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+     <!-- Logo Section -->
+     <img src="https://ptleecnpt.edu.in/img/cnptlogo.png" alt="Logo" class="logo">
+    <H1>P.T.Lee CHENGALVARAYA NAICKER POLYTECHNIC COLLEGE</H1>
+    <H2>Department of Mechanical Engineering</H2>
+    <h2>II YEAR - CONTINUOUS ASSESSMENT TEST 1</h2>
+    <H2>RESULT PAGE</H2>
+    <input type="text" id="rollNumber" placeholder="Enter Roll Number">
+    <input type="text" id="registerNumber" placeholder="Enter Register Number">
+    <button onclick="showResult()">Get Result</button>
+    <div id="result"></div>
+    
+    <script>
+        const students = {
+  "24202379": { "name": "AKASH P", "AMT": "A", "FM": "A", "roll": "1" },
+  "24220463": { "name": "AMOSE RENOLD D", "AMT": "A", "FM": "A", "roll": "2" },
+  "24220464": { "name": "ASHRAF K", "AMT": "0", "FM": "0", "roll": "3" },
+  "24202380": { "name": "BALA SUBRAMANI S", "AMT": "47", "FM": "50", "roll": "4" },
+  "24202381": { "name": "BALAJI S", "AMT": "A", "FM": "A", "roll": "5" },
+  "24220465": { "name": "CHANDRU U", "AMT": "0", "FM": "0", "roll": "6" },
+  "24202385": { "name": "CITHESH B", "AMT": "2", "FM": "32", "roll": "7" },
+  "24202386": { "name": "DEVESH KUMAAR V", "AMT": "20", "FM": "29", "roll": "8" },
+  "24220466": { "name": "DHANUSH S", "AMT": "0", "FM": "6", "roll": "9" },
+  "24202387": { "name": "DHAYANIDHI R", "AMT": "7", "FM": "5", "roll": "10" },
+  "24202388": { "name": "DHINAKARAN S", "AMT": "0", "FM": "12", "roll": "11" },
+  "24202389": { "name": "DHINESH C", "AMT": "10", "FM": "31", "roll": "12" },
+  "24202390": { "name": "DINESH R", "AMT": "0", "FM": "25", "roll": "13" },
+  "24202391": { "name": "GOKULA KRISHNAN V", "AMT": "A", "FM": "39", "roll": "14" },
+  "24220468": { "name": "HARI D", "AMT": "0", "FM": "0", "roll": "15" },
+  "24202392": { "name": "HARIHARAN S", "AMT": "6", "FM": "17", "roll": "16" },
+  "24202393": { "name": "HARIPRIYAN G", "AMT": "9", "FM": "2", "roll": "17" },
+  "24202395": { "name": "HARISH L", "AMT": "A", "FM": "2", "roll": "18" },
+  "24220470": { "name": "JEEVITHA A", "AMT": "0", "FM": "25", "roll": "19" },
+  "24202396": { "name": "JEROLD GRIMES.P", "AMT": "43", "FM": "50", "roll": "20" },
+  "24220471": { "name": "JEROVADHAN.A", "AMT": "22", "FM": "39", "roll": "21" },
+  "24220472": { "name": "KAARTHICK S", "AMT": "0", "FM": "4", "roll": "22" },
+  "24202397": { "name": "KAMALESH V", "AMT": "A", "FM": "2", "roll": "23" },
+  "24202398": { "name": "KAPILASH V", "AMT": "10", "FM": "35", "roll": "24" },
+  "24220474": { "name": "KARTHIK M", "AMT": "A", "FM": "A", "roll": "25" },
+  "24220475": { "name": "KRISHNAKUMAR V", "AMT": "27", "FM": "47", "roll": "26" },
+  "24202399": { "name": "MADHAN KOWSHIK K N", "AMT": "A", "FM": "A", "roll": "27" },
+  "24202400": { "name": "MADHAN PRABU K", "AMT": "0", "FM": "18", "roll": "28" },
+  "24202401": { "name": "MADHESHWARAN R", "AMT": "0", "FM": "16", "roll": "29" },
+  "24220476": { "name": "MAHENDRAN R", "AMT": "A", "FM": "A", "roll": "30" },
+  "24220477": { "name": "MOHAMMAD ABRAAR I", "AMT": "11", "FM": "38", "roll": "31" },
+  "24220478": { "name": "MOHAMMED AJARUDEEN S", "AMT": "0", "FM": "0", "roll": "32" },
+  "24202402": { "name": "MOHAMMED HAJA HAMEED K", "AMT": "0", "FM": "11", "roll": "33" },
+  "24220481": { "name": "MOHAN KUMAR S", "AMT": "6", "FM": "0", "roll": "34" },
+  "24202403": { "name": "MONISHWAR K", "AMT": "12", "FM": "13", "roll": "35" },
+  "24202404": { "name": "MUKESH V", "AMT": "A", "FM": "A", "roll": "36" },
+  "24202405": { "name": "MUKESH KUMAR M", "AMT": "0", "FM": "14", "roll": "37" },
+  "24290705": { "name": "ABINASH C", "AMT": "9", "FM": "25", "roll": "38" },
+  "24296084": { "name": "ALLAN PRADEEP", "AMT": "3", "FM": "12", "roll": "39" },
+  "24290706": { "name": "GOKUL RAJ A", "AMT": "3", "FM": "20", "roll": "40" },
+  "24296086": { "name": "HARIKRISHNAN N", "AMT": "2", "FM": "6", "roll": "41" },
+  "24296087": { "name": "JAGAN M", "AMT": "18", "FM": "21", "roll": "42" },
+  "24290707": { "name": "KARTHIKE B", "AMT": "17", "FM": "22", "roll": "43" },
+  "24290708": { "name": "KARTHIKEYAN M", "AMT": "7", "FM": "30", "roll": "44" },
+  "24290710": { "name": "LOGESHWARAN V", "AMT": "7", "FM": "10", "roll": "45" },
+  "24290711": { "name": "MAGESH M", "AMT": "7", "FM": "25", "roll": "46" },
+  "24290712": { "name": "MOHAN M", "AMT": "0", "FM": "5", "roll": "47" },
+  "2429608": { "name": "JANARTHIRAN S", "AMT": "6", "FM": "11", "roll": "48" },
+    "23202345": { "name": "PRANESH KUMAR V", "AMT": "A", "FM": "A", "roll": "1" },
+    "24202406": { "name": "MUKESH RAJ . P", "AMT": "1", "FM": "3", "roll": "2" },
+    "24202407": { "name": "MUTHU VENKATESH M", "AMT": "A", "FM": "2", "roll": "3" },
+    "24202408": { "name": "NAGANDARAN S", "AMT": "A", "FM": "15", "roll": "4" },
+    "24220484": { "name": "NAGARAJ J", "AMT": "1", "FM": "7", "roll": "5" },
+    "24202409": { "name": "NANDHAKUMAR D", "AMT": "25", "FM": "28", "roll": "6" },
+    "24202410": { "name": "NARASIMMAN V", "AMT": "20", "FM": "32", "roll": "7" },
+    "24220485": { "name": "PRADHAP S", "AMT": "0", "FM": "10", "roll": "8" },
+    "24220486": { "name": "RAGESH KANNAN M", "AMT": "0", "FM": "4", "roll": "9" },
+    "24220487": { "name": "RAGHUL C", "AMT": "A", "FM": "A", "roll": "10" },
+    "24202411": { "name": "RAGUL V", "AMT": "20", "FM": "17", "roll": "11" },
+    "24220488": { "name": "RAHUL M", "AMT": "A", "FM": "A", "roll": "12" },
+    "24220490": { "name": "RAJKUMAR V", "AMT": "A", "FM": "3", "roll": "13" },
+    "24220493": { "name": "SALAMON S", "AMT": "A", "FM": "A", "roll": "14" },
+    "24202412": { "name": "SANTHOSH D", "AMT": "7", "FM": "20", "roll": "15" },
+    "24220495": { "name": "SASI KUMAR A", "AMT": "0", "FM": "11", "roll": "16" },
+    "24202413": { "name": "SHAIRISHEE D", "AMT": "A", "FM": "0", "roll": "17" },
+    "24202414": { "name": "SHANMUGA PRIYAN V", "AMT": "1", "FM": "A", "roll": "18" },
+    "24220496": { "name": "SHARMAN S", "AMT": "10", "FM": "21", "roll": "19" },
+    "24202415": { "name": "SHYAM PRASATH U", "AMT": "2", "FM": "20", "roll": "20" },
+    "24202416": { "name": "SRI PRIYAN R", "AMT": "6", "FM": "18", "roll": "21" },
+    "24202417": { "name": "SRIKANTH R", "AMT": "48", "FM": "34", "roll": "22" },
+    "24202418": { "name": "SUDHARSUN B", "AMT": "8", "FM": "20", "roll": "23" },
+    "24220497": { "name": "SUDIPTA SAIKRISHNA", "AMT": "1", "FM": "3", "roll": "24" },
+    "24220498": { "name": "SUREN KUMAR R", "AMT": "0", "FM": "9", "roll": "25" },
+    "24220501": { "name": "SYED NISAMUDIN S", "AMT": "A", "FM": "A", "roll": "26" },
+    "24202420": { "name": "TAMILMANI S", "AMT": "0", "FM": "A", "roll": "27" },
+    "24202421": { "name": "THARUN K", "AMT": "13", "FM": "21", "roll": "28" },
+    "24202422": { "name": "THARUN N", "AMT": "20", "FM": "32", "roll": "29" },
+    "24202423": { "name": "THARUN S", "AMT": "7", "FM": "A", "roll": "30" },
+    "24220502": { "name": "VETRI S", "AMT": "2", "FM": "0", "roll": "31" },
+    "24202424": { "name": "VIGNESHWARAN T", "AMT": "A", "FM": "A", "roll": "32" },
+    "24202425": { "name": "VIJAYARAGHAVAN A", "AMT": "34", "FM": "26", "roll": "33" },
+    "24202426": { "name": "VIJYA SUNDAR S", "AMT": "A", "FM": "A", "roll": "34" },
+    "24220503": { "name": "VIKRAM K", "AMT": "1", "FM": "A", "roll": "35" },
+    "24220504": { "name": "VISHAL J", "AMT": "4", "FM": "0", "roll": "36" },
+    "24202427": { "name": "VISHAL S", "AMT": "2", "FM": "26", "roll": "37" },
+    "24202428": { "name": "WILLINGTON CHRISTOPHER E", "AMT": "38", "FM": "41", "roll": "38" },
+    "24202429": { "name": "YOKESH N", "AMT": "2", "FM": "0", "roll": "39" },
+    "24290714": { "name": "PARASURAM R", "AMT": "21", "FM": "16", "roll": "40" },
+    "24290715": { "name": "SAKTHIKUMAR", "AMT": "A", "FM": "A", "roll": "41" },
+    "24290716": { "name": "SANTHOSH K", "AMT": "20", "FM": "22", "roll": "42" },
+    "24290717": { "name": "SARATHKUMAR S", "AMT": "23", "FM": "17", "roll": "43" },
+    "24296092": { "name": "YOGESHWARA RAO G", "AMT": "25", "FM": "20", "roll": "44" },
+    "24202721": { "name": "SHANJEEV R", "AMT": "9", "FM": "A", "roll": "45" },
+};
+
+        
+function showResult() {
+            const rollNumber = document.getElementById("rollNumber").value.trim();
+            const registerNumber = document.getElementById("registerNumber").value.trim();
+
+            if (!rollNumber || !registerNumber) {
+                document.getElementById("result").innerHTML = "<p>Please enter both Roll Number and Register Number.</p>";
+                return;
+            }
+
+            const student = students[registerNumber];
+
+            if (student && student.roll === rollNumber) {
+                const amtMarks = student.AMT;
+                const fmMarks = student.FM;
+
+                const amtStatus = amtMarks === 'A' ? 'Absent' : amtMarks >= 20 ? 'PASS' : 'FAIL';
+                const fmStatus = fmMarks === 'A' ? 'Absent' : fmMarks >= 20 ? 'PASS' : 'FAIL';
+
+                const amtColor = amtStatus === 'PASS' ? 'green' : amtStatus === 'FAIL' ? 'red' : 'orange';
+                const fmColor = fmStatus === 'PASS' ? 'green' : fmStatus === 'FAIL' ? 'red' : 'orange';
+
+                const resultHtml = `
+                    <h3>Result for ${student.name}</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Marks</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>AMT</td>
+                                <td>${amtMarks}</td>
+                                <td class="${amtStatus.toLowerCase()}">${amtStatus}</td>
+                            </tr>
+                            <tr>
+                                <td>FM</td>
+                                <td>${fmMarks}</td>
+                                <td class="${fmStatus.toLowerCase()}">${fmStatus}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="legends">
+                        <hr>
+                        <h4>Legends</h4>
+                        <hr>
+                        <span class="legend-item"><span style="color: red;">PASS</span>: Marks >= 20</span><br><br>
+                        <span class="legend-item"><span style="color: red;">FAIL</span>: Marks < 20</span><br><br>
+                        <span class="legend-item"><span style="color: red;">A</span>: Absent</span><br><br>
+                        <span class="legend-item"><span style="color: red;">AMT</span>: Advanced Manufacturing Technology</span><br><br>
+                        <span class="legend-item"><span style="color: red;">FM</span>: Fluid Mechanics</span>
+                    </div>
+                `;
+
+                document.getElementById("result").innerHTML = resultHtml;
+            } else {
+                document.getElementById("result").innerHTML = "<p>No student found for the provided details.</p>";
+            }
+        }
+    </script>
+</body>
+</html>
